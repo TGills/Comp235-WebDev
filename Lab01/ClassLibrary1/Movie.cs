@@ -14,7 +14,8 @@ namespace MovieLibrary
         public int Id { get; set; }
 
         public string Title { get; set; }
-
+        public string Name { get; set; }
+        public string Position { get; set; }
         public bool InTheaters { get; set; }
         public string Director { get; set; }
 
@@ -38,6 +39,12 @@ namespace MovieLibrary
         public Movie(int id)
         {
             Id = id;
+        }
+        public Movie(int id, string name, string position)
+        {
+            Id = id;
+            Name = name;
+            Position = position;
         }
 
         public Movie(string title, string director, string description)

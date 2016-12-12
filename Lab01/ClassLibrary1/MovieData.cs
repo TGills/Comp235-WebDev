@@ -43,7 +43,6 @@ namespace MovieLibrary
             con.Close();
             return movies;
         }
-
         public SqlDataReader getMoviesByID(int selectMovie)
         {
             SqlConnection con = new SqlConnection(Connections.ConnectionString());           
@@ -58,7 +57,30 @@ namespace MovieLibrary
             SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);          
             return reader;
         }
+        public SqlDataReader getCategories()
+        {
+            SqlConnection con = new SqlConnection(Connections.ConnectionString());
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "Select * From MovieCategories";         
+            con.Open();      
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            return reader;
+        }
+        public void CategoryUpdate(Movie CategoryToUpdate)
+        {
+            SqlConnection con = new SqlConnection(Connections.ConnectionString());
+            SqlCommand cmd = new SqlCommand();
 
+            cmd.Connection = con;
+            cmd.CommandText = "UPDATE MovieCategories SET  Name=@Name, Position=@Position WHERE Id=@Id";
+            cmd.Parameters.AddWithValue("@Id", CategoryToUpdate.Id);
+            cmd.Parameters.AddWithValue("@Name", CategoryToUpdate.Name);
+            cmd.Parameters.AddWithValue("@Position", CategoryToUpdate.Position);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
         public void MovieUpdate(Movie MovieToUpdate)
         {
             SqlConnection con = new SqlConnection(Connections.ConnectionString());
@@ -134,7 +156,7 @@ namespace MovieLibrary
             SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             return reader;
         }      
-        public void updateMovie(int id, String title, string director, string description)
+        public void updateMovie(int id, string title, string director, string description)
         {
             SqlConnection con = new SqlConnection();
             con.ConnectionString = connectionString;
@@ -167,7 +189,19 @@ namespace MovieLibrary
             con.Close();
 
         }
-
+        public void insertMovieCategory(int Id, string Name, string Position)
+        {
+            SqlConnection con = new SqlConnection(Connections.ConnectionString());
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "INSERT INTO MovieCategories(Id, Name, Position) VALUES(@Id, @Name, @Position)";
+            cmd.Parameters.AddWithValue("Id", Id);
+            cmd.Parameters.AddWithValue("Name", Name);
+            cmd.Parameters.AddWithValue("Position", Position);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
 
 
 
