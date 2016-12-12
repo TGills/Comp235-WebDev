@@ -43,6 +43,22 @@ namespace MovieLibrary
             con.Close();
             return movies;
         }
+
+        public SqlDataReader getMoviesByID(int selectMovie)
+        {
+            SqlConnection con = new SqlConnection(Connections.ConnectionString());           
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.Connection = con;
+            cmd.CommandText = "Select * From Movies Where Id=@Id";
+            cmd.Parameters.AddWithValue("Id", selectMovie);
+            // SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);          
+            return reader;
+        }
+
         public void MovieUpdate(Movie MovieToUpdate)
         {
             SqlConnection con = new SqlConnection(Connections.ConnectionString());
@@ -117,7 +133,7 @@ namespace MovieLibrary
             con.Open();
             SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             return reader;
-        }
+        }      
         public void updateMovie(int id, String title, string director, string description)
         {
             SqlConnection con = new SqlConnection();

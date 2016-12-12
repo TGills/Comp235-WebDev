@@ -20,6 +20,23 @@ namespace MovieLibrary
             md.MovieUpdate(MovieToUpdate);
         }
 
+        public void getMovieByID(int id)
+        {
+           //int selectMovie = new Movie(id);
+            MovieData md = new MovieData();
+            md.getMoviesByID(id);
+          
+
+
+        }
+
+
+
+
+
+
+
+
 
     }
 }

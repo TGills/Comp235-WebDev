@@ -35,6 +35,11 @@ namespace MovieLibrary
 
         public Movie() { }
 
+        public Movie(int id)
+        {
+            Id = id;
+        }
+
         public Movie(string title, string director, string description)
         {
             Title = title;

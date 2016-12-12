@@ -14,7 +14,7 @@
             ID="Repeater1" 
             runat="server">
             <ItemTemplate>
-               <a href ='StudyGuide2.aspx?Title=<%#Eval("id")%>'><%#Eval("Title") %></a> |
+               <a href ='StudyGuide2.aspx?Id=<%#Eval("id")%>'><%#Eval("Title") %></a> |
             </ItemTemplate>
         </asp:Repeater>
     
