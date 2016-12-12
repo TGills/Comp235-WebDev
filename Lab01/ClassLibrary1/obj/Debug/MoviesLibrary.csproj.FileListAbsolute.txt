@@ -2,3 +2,7 @@ M:\COMP235 - Web Stuff\Lab01\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
 M:\COMP235 - Web Stuff\Lab01\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 M:\COMP235 - Web Stuff\Lab01\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
 M:\COMP235 - Web Stuff\Lab01\ClassLibrary1\obj\Debug\MoviesLibrary.csprojResolveAssemblyReference.cache
+M:\Comp235-WebDev\Lab01\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+M:\Comp235-WebDev\Lab01\ClassLibrary1\obj\Debug\MoviesLibrary.csprojResolveAssemblyReference.cache
+M:\Comp235-WebDev\Lab01\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+M:\Comp235-WebDev\Lab01\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

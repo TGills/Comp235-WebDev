@@ -38,7 +38,6 @@ namespace MovieLibrary
                         reader["title"].ToString(),
                         reader["director"].ToString(),
                         reader["description"].ToString()));
-
             }
 
             con.Close();
