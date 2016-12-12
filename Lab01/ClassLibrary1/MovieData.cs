@@ -3,13 +3,20 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
+using System.Web.Configuration;
+
 
 namespace MovieLibrary
 {
-    class MovieData
+    public class MovieData
     {
+        public string connectionString;
+        public MovieData()
+        {
+            connectionString =
+                WebConfigurationManager.ConnectionStrings["dbMovies1"].ConnectionString;
+        }
         public List<Movie> getMovies()
         {
             List<Movie> movies = new List<Movie>();
@@ -38,7 +45,6 @@ namespace MovieLibrary
             con.Close();
             return movies;
         }
-
         public void MovieUpdate(Movie MovieToUpdate)
         {
             SqlConnection con = new SqlConnection(Connections.ConnectionString());
@@ -54,7 +60,99 @@ namespace MovieLibrary
             cmd.ExecuteNonQuery();
             con.Close();
         }
+        public List<Movie> getMovieCategories()
+        {
+            List<Movie> movies = new List<Movie>();
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = connectionString;
+            SqlCommand cmd =
+                new SqlCommand("Select Id, Name From MovieCategory");
+            cmd.Connection = con;
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            while (reader.Read())
+            {
+                movies.Add(new Movie(
+                        Convert.ToInt32(reader["id"].ToString()),
+                        reader["title"].ToString(),
+                        reader["director"].ToString(),
+                        reader["description"].ToString()));
+            }
+            con.Close();
+            return movies;
+        }
+        public SqlDataReader getMoviesBycatID(int catID)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = connectionString;
+            SqlCommand cmd =
+                new SqlCommand("Select Id, Title, Director, Description From Movies Where CategoryId=@catID");
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("catID", catID);
 
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            return reader;
+        }
+        public SqlDataReader getMoviesByDirector(string director)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = connectionString;
+            SqlCommand cmd =
+                new SqlCommand("Select * From Movies Where Director=@director");
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("director", director);
+
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            return reader;
+        }
+        public SqlDataReader getMoviesByTitle(string Title)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = connectionString;
+            SqlCommand cmd =
+                new SqlCommand("Select * From Movies Where Title=@Title");
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("Title", Title);
+
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            return reader;
+        }
+        public void updateMovie(int id, String title, string director, string description)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = connectionString;
+
+            SqlCommand cmd =
+                new SqlCommand("Update Movies Set Title=@Title, Director=@Director, Description=@Description Where Id=@Id");
+            cmd.Connection = con;
+            cmd.Parameters.AddWithValue("Title", title);
+            cmd.Parameters.AddWithValue("Director", director);
+            cmd.Parameters.AddWithValue("Description", description);
+            cmd.Parameters.AddWithValue("Id", id);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+        public void deleteMovie(int id)
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = connectionString;
+
+            SqlCommand cmd =
+                new SqlCommand("Delete from Movies Where Id=@Id");
+
+            cmd.Connection = con;
+
+            cmd.Parameters.AddWithValue("Id", id);
+
+            con.Open();
+            cmd.ExecuteNonQuery();
+            con.Close();
+
+        }
 
 
 
