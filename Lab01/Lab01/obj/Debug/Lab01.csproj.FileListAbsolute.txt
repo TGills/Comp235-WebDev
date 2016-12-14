@@ -31,3 +31,6 @@ M:\COMP235 - Web Stuff\Lab01\Lab01\bin\Microsoft.CodeDom.Providers.DotNetCompile
 M:\COMP235 - Web Stuff\Lab01\Lab01\obj\Debug\Lab01.csprojResolveAssemblyReference.cache
 M:\COMP235 - Web Stuff\Lab01\Lab01\obj\Debug\Lab01.dll
 M:\COMP235 - Web Stuff\Lab01\Lab01\obj\Debug\Lab01.pdb
+M:\Comp235-WebDev\Lab01\Lab01\obj\Debug\Lab01.csprojResolveAssemblyReference.cache
+M:\Comp235-WebDev\Lab01\Lab01\obj\Debug\Lab01.dll
+M:\Comp235-WebDev\Lab01\Lab01\obj\Debug\Lab01.pdb

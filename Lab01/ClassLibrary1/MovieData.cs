@@ -143,6 +143,17 @@ namespace MovieLibrary
             SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             return reader;
         }
+        public SqlDataReader getMovieTitles()
+        {
+            SqlConnection con = new SqlConnection();
+            con.ConnectionString = connectionString;
+            SqlCommand cmd =
+                new SqlCommand("Select * From Movies");
+            cmd.Connection = con;
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
+            return reader;
+        }
         public SqlDataReader getMoviesByTitle(string Title)
         {
             SqlConnection con = new SqlConnection();
@@ -155,7 +166,7 @@ namespace MovieLibrary
             con.Open();
             SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection);
             return reader;
-        }      
+        }
         public void updateMovie(int id, string title, string director, string description)
         {
             SqlConnection con = new SqlConnection();

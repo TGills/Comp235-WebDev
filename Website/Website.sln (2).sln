@@ -7,20 +7,21 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "Website(1)", ".", "{22A3F57
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_55957"
-		Debug.AspNetCompiler.PhysicalPath = "M:\Comp235-WebDev\Website\"
+		Debug.AspNetCompiler.PhysicalPath = "..\Website\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55957\"
 		Debug.AspNetCompiler.Updateable = "true"
 		Debug.AspNetCompiler.ForceOverwrite = "true"
 		Debug.AspNetCompiler.FixedNames = "false"
 		Debug.AspNetCompiler.Debug = "True"
 		Release.AspNetCompiler.VirtualPath = "/localhost_55957"
-		Release.AspNetCompiler.PhysicalPath = "M:\Comp235-WebDev\Website\"
+		Release.AspNetCompiler.PhysicalPath = "..\Website\"
 		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_55957\"
 		Release.AspNetCompiler.Updateable = "true"
 		Release.AspNetCompiler.ForceOverwrite = "true"
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "55957"
+		SlnRelativePath = "..\Website\"
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MoviesLibrary", "..\Lab01\ClassLibrary1\MoviesLibrary.csproj", "{B1DB79F5-9B01-4CEF-955A-B06E5F612F55}"
