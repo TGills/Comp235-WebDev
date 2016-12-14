@@ -14,7 +14,6 @@
             <ItemTemplate>
                <a href ='FunWithRepeaters.aspx?id=<%#Eval("id")%>'> <%#Eval("Name") %></a> |
             </ItemTemplate>
-
         </asp:Repeater>
     
     </div>
