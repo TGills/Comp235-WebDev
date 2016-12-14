@@ -11,16 +11,8 @@ public partial class StudyGuideQ5 : System.Web.UI.Page
     int id;
     string name;
     string position;
-    protected void Page_PreRender(object sender, EventArgs e)
+    protected void Page_Load(object sender, EventArgs e)
     {
-        MovieUtilities mu = new MovieUtilities();
-        MovieData md = new MovieData();
-        try
-        {
-            md.insertMovieCategory(id, name, position);
-        }
-        catch { }
-
 
     }
 
@@ -30,6 +22,13 @@ public partial class StudyGuideQ5 : System.Web.UI.Page
     {        
         id = Convert.ToInt32(tbID.Text);
         name = tbName.Text;
-        position = tbPosition.Text;     
+        position = tbPosition.Text;
+
+        MovieUtilities mu = new MovieUtilities();
+        MovieData md = new MovieData();
+
+        md.insertMovieCategory(id, name, position);
+        
+
     }
 }

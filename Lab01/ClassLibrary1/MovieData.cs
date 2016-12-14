@@ -194,7 +194,7 @@ namespace MovieLibrary
             SqlConnection con = new SqlConnection(Connections.ConnectionString());
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = con;
-            cmd.CommandText = "INSERT INTO MovieCategories(Id, Name, Position) VALUES(@Id, @Name, @Position)";
+            cmd.CommandText = "INSERT INTO MovieCategories(Name, Position) VALUES( @Name, @Position)";
             cmd.Parameters.AddWithValue("Id", Id);
             cmd.Parameters.AddWithValue("Name", Name);
             cmd.Parameters.AddWithValue("Position", Position);

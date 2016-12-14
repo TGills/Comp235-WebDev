@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="StudyGuideQ5.aspx.cs" Inherits="StudyGuideQ5" %>
+﻿<%@ Page Language="C#" ViewStateMode="Enabled" AutoEventWireup="true" CodeFile="StudyGuideQ5.aspx.cs" Inherits="StudyGuideQ5" %>
 
 <!DOCTYPE html>
 
@@ -8,12 +8,22 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:GridView ID="GridView1" runat="server" DataSourceID="ObjectDataSource1">
+        <asp:GridView 
+            ID="GridView1" 
+            runat="server" 
+            DataSourceID="ObjectDataSource1">
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
             </Columns>
         </asp:GridView>
-        <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" DataObjectTypeName="MovieLibrary.Movie" InsertMethod="insertMovieCategory" SelectMethod="getCategories" TypeName="MovieLibrary.MovieData" UpdateMethod="CategoryUpdate">
+        <asp:ObjectDataSource 
+            ID="ObjectDataSource1" 
+            runat="server" 
+            DataObjectTypeName="MovieLibrary.Movie" 
+            InsertMethod="insertMovieCategory" 
+            SelectMethod="getCategories" 
+            TypeName="MovieLibrary.MovieData" 
+            UpdateMethod="CategoryUpdate">
             <InsertParameters>
                 <asp:Parameter Name="Id" Type="Int32" />
                 <asp:Parameter Name="Name" Type="String" />
@@ -44,7 +54,8 @@
                 ID="Button1" 
                 runat="server" 
                 OnClick="Button1_Click" 
-                Text="Commit Changes" />
+                Text="Commit Changes"
+                EnablePostback ="True" />
             <br />
         </asp:Panel>
     </form>
