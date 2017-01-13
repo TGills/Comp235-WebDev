@@ -6,6 +6,7 @@
 <head runat="server">
     <title></title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script>
         var sat = "Life is good";
         var sun = "Stay home today";

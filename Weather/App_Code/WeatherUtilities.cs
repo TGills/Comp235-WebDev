@@ -14,7 +14,36 @@ public class WeatherUtilities
 
     public WeatherUtilities()
     {
-        conString = WebConfigurationManager.ConnectionStrings["dbWeatherData"].ConnectionString;
+        conString = WebConfigurationManager.ConnectionStrings["WeatherReports1ConnectionString"].ConnectionString;
+    }
+
+    public List<WeatherReport> getAllReports()
+    {
+        List<WeatherReport> reports = new List<WeatherReport>();
+        
+        SqlConnection con = new SqlConnection();
+        con.ConnectionString = conString;
+        SqlCommand cmd = new SqlCommand("SELECT * FROM Reports");
+
+        
+        con.Open();
+        cmd.Connection = con;
+
+
+        SqlDataReader reader = cmd.ExecuteReader();
+        while (reader.Read())
+        {
+            WeatherReport wr = new WeatherReport(
+                Convert.ToInt32(reader["id"]),
+                Convert.ToSingle(reader["Lat"]),
+                Convert.ToSingle(reader["Lon"]),
+                Convert.ToSingle(reader["Facing"]),
+                Convert.ToDateTime(reader["TimeSubmitted"]));
+            reports.Add(wr);
+        }
+        
+        con.Close();
+        return reports;
     }
 
     public void addWeatherReport(WeatherReport wr)
@@ -36,6 +65,7 @@ public class WeatherUtilities
         con.Close();
 
     }
+    
 
 
 
