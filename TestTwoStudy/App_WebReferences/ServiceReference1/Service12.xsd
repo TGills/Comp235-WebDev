@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WcfService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WcfService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="CompositeType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BoolValue" type="xs:boolean" />
+      <xs:element minOccurs="0" name="StringValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
+  <xs:complexType name="Equation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Left" type="xs:int" />
+      <xs:element minOccurs="0" name="LeftSide" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Operation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Result" type="xs:int" />
+      <xs:element minOccurs="0" name="Right" type="xs:int" />
+      <xs:element minOccurs="0" name="RightSide" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Equation" nillable="true" type="tns:Equation" />
+  <xs:complexType name="ArrayOfMovie">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Movie" nillable="true" type="tns:Movie" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMovie" nillable="true" type="tns:ArrayOfMovie" />
+  <xs:complexType name="Movie">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Director" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Movie" nillable="true" type="tns:Movie" />
+  <xs:complexType name="ArrayOfMovieCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MovieCategory" nillable="true" type="tns:MovieCategory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMovieCategory" nillable="true" type="tns:ArrayOfMovieCategory" />
+  <xs:complexType name="MovieCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Position" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MovieCategory" nillable="true" type="tns:MovieCategory" />
+</xs:schema>
