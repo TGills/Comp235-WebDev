@@ -33,7 +33,7 @@ namespace WcfService
         List<MovieCategory> getAllMovieCategories();
 
         [OperationContract]
-        List<MovieCategory> getAllMoviesByCategory(int catId);
+        List<Movie> getAllMoviesByCategory(int catId);
     }
 
 
@@ -68,11 +68,11 @@ namespace WcfService
         [DataMember]
         public string Description { get; set; }
         public Movie() { }
-        public Movie(string title, string director, string descritpion)
+        public Movie(string title, string director, string description)
         {
             Title = title;
             Director = director;
-            Description = Description;
+            Description = description;
         }
     }
     [DataContract]
@@ -146,11 +146,11 @@ namespace WcfService
         [DataMember]
         public int Position { get; set; }
         public MovieCategory() { }
-        public MovieCategory(int id, string name, int position)
+        public MovieCategory(int id, string name)
         {
             Id = id;
             Name = name;
-            Position = position;
+            
         }
     }
 }

@@ -1,0 +1,6 @@
+M:\Comp235-WebDev\WcfService2\WcfService2\bin\WcfService2.dll.config
+M:\Comp235-WebDev\WcfService2\WcfService2\bin\WcfService2.dll
+M:\Comp235-WebDev\WcfService2\WcfService2\bin\WcfService2.pdb
+M:\Comp235-WebDev\WcfService2\WcfService2\obj\Debug\WcfService2.dll
+M:\Comp235-WebDev\WcfService2\WcfService2\obj\Debug\WcfService2.pdb
+M:\Comp235-WebDev\WcfService2\WcfService2\obj\Debug\WcfService2.csprojResolveAssemblyReference.cache

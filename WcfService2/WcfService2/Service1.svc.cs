@@ -18,14 +18,11 @@ namespace WcfService
         public List<Movie> GetAllMovies()
         {
             List<Movie> movies = new List<Movie>();
-
             SqlConnection con =
                 new SqlConnection
                 (WebConfigurationManager.ConnectionStrings["dbMovies"].ConnectionString);
-
             SqlCommand cmd = new SqlCommand("Select Title, Director, Description From Movies");
             cmd.Connection = con;
-
             con.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -33,55 +30,49 @@ namespace WcfService
                 Movie m = new Movie(reader["Title"].ToString(),
                                     reader["Director"].ToString(),
                                     reader["Description"].ToString());
-
                 movies.Add(m);
             }
-
             return movies;
         }
         
         public List<MovieCategory> getAllMovieCategories()
         {
             List<MovieCategory> movieCategories = new List<MovieCategory>();
-
             SqlConnection con =
                 new SqlConnection
                 (WebConfigurationManager.ConnectionStrings["dbMovies"].ConnectionString);
-
-            SqlCommand cmd = new SqlCommand("Select Id,Name,Positon From MovieCategories");
+            SqlCommand cmd = new SqlCommand("Select Id, Name From MovieCategories");
             cmd.Connection = con;
-
             con.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 MovieCategory mc = new MovieCategory(Convert.ToInt32(reader["Id"].ToString()),
-                                    reader["Name"].ToString(),
-                                    Convert.ToInt32(reader["Position"].ToString()));
-
+                                    reader["Name"].ToString());
                 movieCategories.Add(mc);
             }
 
             return movieCategories;
         }
 
-        public List<MovieCategory> getAllMoviesByCategory(int catId)
+        public List<Movie> getAllMoviesByCategory(int catId)
         {
-            List<MovieCategory> movieCategories = new List<MovieCategory>();
+            List<Movie> movieCategories = new List<Movie>();
 
             SqlConnection con =
                 new SqlConnection
                 (WebConfigurationManager.ConnectionStrings["dbMovies"].ConnectionString);
 
-            SqlCommand cmd = new SqlCommand("Select Id,Name,Positon From MovieCategories WHERE Id=" + catId);
+            SqlCommand cmd = new SqlCommand("Select Title, Director, Description From Movies WHERE CategoryId = @CategoryId");
+            cmd.Parameters.AddWithValue("CategoryId", catId);
             cmd.Connection = con;
             con.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                MovieCategory mc = new MovieCategory(Convert.ToInt32(reader["Id"].ToString()),
-                                    reader["Name"].ToString(),
-                                    Convert.ToInt32(reader["Position"].ToString()));
+                Movie mc = new Movie(reader["Title"].ToString(),
+                                     reader["Director"].ToString(),
+                                     reader["Description"].ToString());
 
                 movieCategories.Add(mc);
             }
@@ -106,12 +97,10 @@ namespace WcfService
         {
             return string.Format("Hello {0}, welcome to the world of Web Services!", userName);
         }
-
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
         }
-
         public Equation GenerateEquation()
         {
             Random r = new Random();
@@ -136,7 +125,6 @@ namespace WcfService
             Equation e = new Equation(a, b, s);
             return e;
         }
-
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
             if (composite == null)
