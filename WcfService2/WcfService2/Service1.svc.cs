@@ -80,9 +80,56 @@ namespace WcfService
         }
 
 
+        //TEST1
+        public List<STOCK> getAllStocks()
+        {
+            List<STOCK> allStock = new List<STOCK>();
 
+            SqlConnection con =
+                new SqlConnection
+                (WebConfigurationManager.ConnectionStrings["dbStocks"].ConnectionString);
 
+            SqlCommand cmd = new SqlCommand("Select StockName, StockSymbol, Shares, Price From Stocks");
+            
+            cmd.Connection = con;
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                STOCK st = new STOCK(reader["StockName"].ToString(),
+                                     reader["StockSymbol"].ToString(),
+                                     Convert.ToInt32(reader["Shares"].ToString()),
+                                     Convert.ToDouble(reader["Price"].ToString()));
 
+                allStock.Add(st);
+            }
+            return allStock;
+        }
+        //TEST2
+        public List<STOCK> getStockByCode(string code)
+        {
+            List<STOCK> allStock = new List<STOCK>();
+
+            SqlConnection con =
+                new SqlConnection
+                (WebConfigurationManager.ConnectionStrings["dbStocks"].ConnectionString);
+
+            SqlCommand cmd = new SqlCommand("Select StockName, StockSymbol, Shares, Price From Stocks WHERE StockSymbol = @StockSymbol");
+            cmd.Parameters.AddWithValue("StockSymbol", code);
+            cmd.Connection = con;
+            con.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                STOCK st = new STOCK(reader["StockName"].ToString(),
+                                     reader["StockSymbol"].ToString(),
+                                     Convert.ToInt32(reader["Shares"].ToString()),
+                                     Convert.ToDouble(reader["Price"].ToString()));
+
+                allStock.Add(st);
+            }
+            return allStock;
+        }
 
 
 

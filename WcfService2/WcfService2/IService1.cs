@@ -34,6 +34,14 @@ namespace WcfService
 
         [OperationContract]
         List<Movie> getAllMoviesByCategory(int catId);
+
+
+        [OperationContract]
+        List<STOCK> getAllStocks();
+        [OperationContract]
+        List<STOCK> getStockByCode(string code);
+
+
     }
 
 
@@ -50,7 +58,7 @@ namespace WcfService
             get { return boolValue; }
             set { boolValue = value; }
         }
-        
+
         [DataMember]
         public string StringValue
         {
@@ -150,8 +158,34 @@ namespace WcfService
         {
             Id = id;
             Name = name;
-            
+
         }
+    }
+
+
+
+    //Test
+    [DataContract]
+    public class STOCK{
+        [DataMember]
+        private String stockName { get; set; }
+        [DataMember]
+        private String stockCode { get; set; }
+        [DataMember]
+        private int quantity { get; set; }
+        [DataMember]
+        private double price { get; set; }
+
+        public STOCK() { }
+        public STOCK(string code, string name, int shares, double priceprice)
+        {
+            stockName = name;
+            stockCode = code;
+            quantity = shares;
+            price = priceprice;
+        }
+
+
     }
 }
 

@@ -16,7 +16,6 @@
             ID="ScriptManager1" 
             runat="server">
         </asp:ScriptManager>
-
         <asp:UpdatePanel 
             ID="UpdatePanel1" 
             runat="server">
@@ -32,15 +31,14 @@
       
         <asp:DataList ID="DataList1" runat="server">
         <ItemTemplate>
-            <span class="MovieTitle"><%#Eval("Title") %>
-            <span style="display:none" class="MovieDetail">
+                <span class="MovieTitle"><%#Eval("Title") %>
+                <span style="display:none" class="MovieDetail">
                 <%#Eval("Director") %><br />
                 <%#Eval("Description") %><br />
                 <hr />
             </span></span>
         </ItemTemplate>
     </asp:DataList>
-
         </ContentTemplate>
         </asp:UpdatePanel>
     </div>
